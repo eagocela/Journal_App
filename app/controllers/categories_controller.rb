@@ -7,21 +7,22 @@ class CategoriesController < ApplicationController
     end
 
     def new
+        @category = Category.new(category_params)
     end
 
     def create
         @category = Category.new(category_params)
 
         if @category.save
-            render json: @category.to_json
+            redirect_to @category
         else
-            redirect_to :new
+            render :new, status: :unprocessable_entity
         end
     end
 
 
     private
     def category_params
-        params.permit(:name)
+        params.require(:category).permit(:name)
     end
 end
