@@ -1,8 +1,12 @@
 class CategoriesController < ApplicationController
     def index
+        @categories = Category.all
     end
 
     def show
+    end
+
+    def new
     end
 
     def create
@@ -15,8 +19,6 @@ class CategoriesController < ApplicationController
         end
     end
 
-    def new
-    end
 
     private
     def category_params
